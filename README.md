@@ -1,5 +1,8 @@
 # cerebral-google-analytics
 
+Warning: This library is currently in it's infancy. It is working for a pre-production application but has not been battle tested. Use at your own risk!
+PR's and help are absolutely welcomed! :)
+
 ## Description
 Google analytics module and provider for Cerebral JS
 This module exposes Google Analytics as a provider,

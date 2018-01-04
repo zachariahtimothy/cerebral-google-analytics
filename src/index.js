@@ -20,8 +20,9 @@ export default (gaTrackingId, options = {}) => {
     controller.once('initialized:model', () => {
       // If we have a userid path, update from state
       if (options.gaOptions && options.gaOptions.userId) {
+        const userIdParts = options.gaOptions.userId.split('.');
         setTimeout(() => {
-          const userId = controller.model.get(options.gaOptions.userId.split('.'));
+          const userId = controller.model.get(userIdParts);
           options.gaOptions.userId = userId;
         }, 2);
       }

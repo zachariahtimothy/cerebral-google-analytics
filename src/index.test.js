@@ -3,7 +3,7 @@ import { Controller, Module } from 'cerebral';
 import assert from 'assert';
 import GoogleAnalyticsProvider, { GoogleAnalyticsProviderError } from './';
 
-describe('Google Analytics Provider', () => {
+describe('Google Analytics Module', () => {
   it('should fire pageview signal', done => {
     const rootModule = Module({
       modules: {
