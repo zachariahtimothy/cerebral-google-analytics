@@ -43,7 +43,7 @@ export default (gaTrackingId, options = {}) => {
         changes.forEach(change => {
           Object.keys(options.events).forEach(eventName => {
             const eventConfig = options.events[eventName];
-            const { statePath } = eventConfig.signal;
+            const { statePath, ...otherEventConfig } = eventConfig;
             const statePathParts = statePath.split('.');
             const matches = change.path.length === statePathParts.length &&
               change.path.every(doesMatchPath(statePathParts));
@@ -51,7 +51,7 @@ export default (gaTrackingId, options = {}) => {
               const value = controller.getState(change.path.join('.'));
               if (value) {
                 const signal = controller.getSignal(`${name}.setEvent`);
-                const { action, category, label, ...otherEventConfigs } = eventConfig;
+                const { action, category, label, ...otherEventConfigs } = otherEventConfig;
                 const payload = {
                   action: action || 'stateChange',
                   category: category || eventName,
