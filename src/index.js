@@ -13,8 +13,8 @@ export default (gaTrackingId, options = {}) => {
     }));
   }
 
-  const matchesOrPercent = signalPathParts => (path, i) =>
-        signalPathParts[i] && (signalPathParts[i] === '%' || signalPathParts[i] === path);
+  const doesMatchPath = statePathParts => (path, i) =>
+        statePathParts[i] && (statePathParts[i] === '%' || signalPathParts[i] === path);
 
   return Module(({ name, controller }) => {
     controller.once('initialized:model', () => {
@@ -38,15 +38,15 @@ export default (gaTrackingId, options = {}) => {
       }
     };
 
-    if (options.signalEvents) {
+    if (options.events) {
       controller.on('flush', changes => {
         changes.forEach(change => {
-          Object.keys(options.signalEvents).forEach(eventName => {
-            const eventConfig = options.signalEvents[eventName];
-            const signalPath = eventConfig.signal;
-            const signalPathParts = signalPath.split('.');
-            const matches = change.path.length === signalPathParts.length &&
-              change.path.every(matchesOrPercent(signalPathParts));
+          Object.keys(options.events).forEach(eventName => {
+            const eventConfig = options.events[eventName];
+            const { statePath } = eventConfig.signal;
+            const statePathParts = statePath.split('.');
+            const matches = change.path.length === statePathParts.length &&
+              change.path.every(doesMatchPath(statePathParts));
             if (matches) {
               const value = controller.getState(change.path.join('.'));
               if (value) {

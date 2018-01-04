@@ -31,11 +31,12 @@ const analytics = GAModule({
     userId: 'myModule.path.to.userId'
   },
   // Events to fire
-  signalEvents: {
+  events: {
     someValueChanged: {
-      // (requied) Signal path to fire event from. Use % for fuzzy matching.
+      // (requied) State path to fire event from. Use % for simple fuzzy matching.
+      // If the state in the specified path changes, a GA event will be sent.
       // This is useful when you have lots of sub-modules where the parent handles signals.
-      signal: 'myModule.%.%.form.myField.value',
+      statePath: 'myModule.%.%.form.myField.value',
       // (optional, defaults to 'stateChange') Action to send to GA
       // Ref: https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#eventAction
       action: 'Some action',
