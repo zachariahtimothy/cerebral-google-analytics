@@ -1,0 +1,10 @@
+{
+  "name": "cerebral-google-analytics",
+  "version": "0.0.1",
+  "description": "Google analytics module and provider for Cerebral JS",
+  "main": "index.js",
+  "repository": "git@github.com:zachariahtimothy/cerebral-google-analytics.git",
+  "author": "Zach Curtis <zachariahtimothy@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
