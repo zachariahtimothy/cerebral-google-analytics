@@ -5,7 +5,7 @@ import TestModeAPI from './utils/testModeAPI';
 import format from './utils/format';
 import trim from './utils/trim';
 import removeLeadingSlash from './utils/removeLeadingSlash';
-import GAProviderError from './GAProviderError';
+import GAProviderError from './GoogleAnalyticsProviderError';
 
 let _debug = false;
 let _titleCase = true;
